@@ -1,6 +1,8 @@
 # manuscript-example
 Example manuscript using a model-based approach
 
+A PDF document of the example manuscript generated from this repo's continuous deployment (CD) pipeline is available at https://odu-cga-cubesat.github.io/manuscript-example/manuscript-example.pdf
+
 ## Installing requirements
 
 You will need [git](https://git-scm.com/downloads) to clone the project contents and [podman](https://podman.io/getting-started/installation) to run the podman images that contain the dependencies needed for generating a PDF document of the example manuscript locally.
