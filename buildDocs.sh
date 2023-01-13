@@ -53,9 +53,9 @@ cp -t dist/ *.bib manuscript-templates/*.bst manuscript-templates/*.cls assets/*
 # workflow for generating LaTeX with BibTeX. See https://tex.stackexchange.com/questions/43325/citations-not-showing-up-in-text-and-bibliography
 cmd="pdflatex manuscript-example.tex && bibtex manuscript-example.aux"
 workdir=$project_root/dist
-podmancmd="podman run --rm -v $workdir:/srv -w /srv docker.io/nanozoo/pdflatex:3.14159265--f2f4a3f $cmd"
+podmancmd="podman run --rm -v $workdir:/srv -w /srv docker.io/nanozoo/pdflatex:3.14159265--f2f4a3f bash -c '$cmd'"
 
-if [ ! $(pdflatex -version | grep '3.14159265')] && [ ! $(bibtex -version | grep '0.99d') ]; then
+if [ ! $(pdflatex -version | grep '3.14159265') ] && [ ! $(bibtex -version | grep '0.99d') ]; then
     echo "Pre-Processing LaTeX document with BibTeX of example manuscript via podman..."
     cd $project_root
     eval $(echo $podmancmd)
@@ -68,9 +68,9 @@ fi
 
 cmd="pdflatex manuscript-example.tex && pdflatex manuscript-example.tex"
 workdir=$project_root/dist
-podmancmd="podman run --rm -v $workdir:/srv -w /srv docker.io/nanozoo/pdflatex:3.14159265--f2f4a3f $cmd"
+podmancmd="podman run --rm -v $workdir:/srv -w /srv docker.io/nanozoo/pdflatex:3.14159265--f2f4a3f bash -c '$cmd'"
 
-if [ ! $(pdflatex -version | grep '3.14159265')] && [ ! $(bibtex -version | grep '0.99d') ]; then
+if [ ! $(pdflatex -version | grep '3.14159265') ] && [ ! $(bibtex -version | grep '0.99d') ]; then
     echo "Generating PDF document from LaTeX/BibTeX document of example manuscript via podman..."
     cd $project_root
     eval $(echo $podmancmd)
